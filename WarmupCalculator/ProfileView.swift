@@ -3,6 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     @AppStorage(StorageKeys.userLevel) private var storedLevel = UserLevel.intermediate.rawValue
     @AppStorage(StorageKeys.preferredUnit) private var storedUnit = WeightUnit.kg.rawValue
+    @AppStorage(StorageKeys.selectedLanguage) private var storedLanguage = AppLanguage.french.rawValue
 
     private var userLevel: UserLevel {
         UserLevel(rawValue: storedLevel) ?? .intermediate
@@ -10,6 +11,10 @@ struct ProfileView: View {
 
     private var preferredUnit: WeightUnit {
         WeightUnit(rawValue: storedUnit) ?? .kg
+    }
+
+    private var appLanguage: AppLanguage {
+        AppLanguage(rawValue: storedLanguage) ?? .french
     }
 
     var body: some View {
@@ -33,6 +38,19 @@ struct ProfileView: View {
                     .pickerStyle(.segmented)
 
                     Text("Le choix est mémorisé et utilisé pour tous les calculs.")
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
+                }
+
+                Section(header: Text("Langue de l'application"), footer: Text("Le changement de langue s'applique immédiatement.").font(.footnote)) {
+                    Picker("Langue", selection: $storedLanguage) {
+                        ForEach(AppLanguage.allCases) { language in
+                            Text(language.displayName).tag(language.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    Text(Localization.localizedString("Langue actuelle : %@", arguments: appLanguage.displayName))
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

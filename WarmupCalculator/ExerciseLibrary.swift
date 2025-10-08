@@ -62,7 +62,7 @@ enum ExerciseLibraryError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .duplicate:
-            return "Cet exercice existe déjà dans la bibliothèque."
+            return Localization.localizedString("Cet exercice existe déjà dans la bibliothèque.")
         }
     }
 }

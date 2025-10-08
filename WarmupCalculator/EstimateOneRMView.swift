@@ -24,13 +24,13 @@ struct EstimateOneRMView: View {
                         .keyboardType(.decimalPad)
 
                     Stepper(value: $reps, in: 1...20) {
-                        Text("Répétitions: \(reps)")
+                        Text(Localization.localizedString("Répétitions: %d", arguments: reps))
                     }
                 }
 
                 Section(header: Text("Estimation")) {
                     if let estimate {
-                        Text("1RM estimé : \(estimate, specifier: "%.1f") \(unit.displayName)")
+                        Text(Localization.localizedString("1RM estimé : %.1f %@", arguments: estimate, unit.displayName))
                             .font(.title3.weight(.semibold))
                             .padding(.vertical, 4)
 

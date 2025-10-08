@@ -141,7 +141,7 @@ struct MainCalculatorView: View {
                     }
                     .buttonStyle(.borderless)
 
-                    Label("Niveau : \(userLevel.displayName)", systemImage: "person.fill")
+                    Label(Localization.localizedString("Niveau : %@", arguments: userLevel.displayName), systemImage: "person.fill")
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }

@@ -44,8 +44,7 @@ struct WarmupModelInfoView: View {
                         .font(.headline)
                     Label("≈50% × 6-8 répétitions", systemImage: "1.circle")
                     Label("≈80% × 3-5 répétitions", systemImage: "2.circle")
-                    Text("Les pratiquants avancés peuvent ajouter un single à 90-92% pour maximiser la potentiation."
-                    )
+                    Text("Les pratiquants avancés peuvent ajouter un single à 90-92% pour maximiser la potentiation.")
                         .font(.footnote)
                         .foregroundColor(.secondary)
                 }

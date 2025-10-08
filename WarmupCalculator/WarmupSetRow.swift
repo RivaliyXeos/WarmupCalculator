@@ -20,13 +20,13 @@ struct WarmupSetRow: View {
                     Text("\(set.weight, specifier: "%.1f") \(unit.displayName)")
                         .font(.headline)
                     if let note = set.note {
-                        Text(note)
+                        Text(LocalizedStringKey(note))
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
                 }
 
-                Text("\(set.reps) répétitions • \(set.percentage)%")
+                Text(Localization.localizedString("%d répétitions • %d%%", arguments: set.reps, set.percentage))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }

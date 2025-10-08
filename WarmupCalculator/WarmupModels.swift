@@ -28,10 +28,10 @@ enum ExerciseType: String, CaseIterable, Codable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .compound: return "Polyarticulaire"
-        case .secondaryCompound: return "Assistance"
-        case .isolation: return "Isolation"
-        case .machine: return "Machine"
+        case .compound: return Localization.localizedString("Polyarticulaire")
+        case .secondaryCompound: return Localization.localizedString("Assistance")
+        case .isolation: return Localization.localizedString("Isolation")
+        case .machine: return Localization.localizedString("Machine")
         }
     }
 
@@ -47,13 +47,13 @@ enum ExerciseType: String, CaseIterable, Codable, Identifiable {
     var helpText: String {
         switch self {
         case .compound:
-            return "Mobilise plusieurs articulations et groupes musculaires (ex: squat, développé couché)."
+            return Localization.localizedString("Mobilise plusieurs articulations et groupes musculaires (ex: squat, développé couché).")
         case .secondaryCompound:
-            return "Mouvements d'assistance polyarticulaires ou variantes plus légères."
+            return Localization.localizedString("Mouvements d'assistance polyarticulaires ou variantes plus légères.")
         case .isolation:
-            return "Cible un muscle ou une articulation spécifique (ex: curl biceps, extension triceps)."
+            return Localization.localizedString("Cible un muscle ou une articulation spécifique (ex: curl biceps, extension triceps).")
         case .machine:
-            return "Exercices guidés sur machine. Classer selon la dominante polyarticulaire ou isolation."
+            return Localization.localizedString("Exercices guidés sur machine. Classer selon la dominante polyarticulaire ou isolation.")
         }
     }
 
@@ -76,9 +76,9 @@ enum EquipmentType: String, CaseIterable, Codable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .barbell: return "Barre"
-        case .dumbbell: return "Haltère"
-        case .machine: return "Machine"
+        case .barbell: return Localization.localizedString("Barre")
+        case .dumbbell: return Localization.localizedString("Haltère")
+        case .machine: return Localization.localizedString("Machine")
         }
     }
 
@@ -117,8 +117,8 @@ enum WarmupModel: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .progressive: return "Progressif"
-        case .potentiation80: return "Potentiation 80%"
+        case .progressive: return Localization.localizedString("Progressif")
+        case .potentiation80: return Localization.localizedString("Potentiation 80%")
         }
     }
 
@@ -132,9 +132,9 @@ enum WarmupModel: String, CaseIterable, Identifiable {
     var summary: String {
         switch self {
         case .progressive:
-            return "Montée graduelle en charge avec single lourd pour activer le système nerveux."
+            return Localization.localizedString("Montée graduelle en charge avec single lourd pour activer le système nerveux.")
         case .potentiation80:
-            return "Deux séries rapides pour un échauffement court mais puissant."
+            return Localization.localizedString("Deux séries rapides pour un échauffement court mais puissant.")
         }
     }
 }
@@ -148,20 +148,20 @@ enum UserLevel: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .beginner: return "Débutant"
-        case .intermediate: return "Intermédiaire"
-        case .advanced: return "Avancé"
+        case .beginner: return Localization.localizedString("Débutant")
+        case .intermediate: return Localization.localizedString("Intermédiaire")
+        case .advanced: return Localization.localizedString("Avancé")
         }
     }
 
     var description: String {
         switch self {
         case .beginner:
-            return "Moins d'un an de pratique régulière. Travail technique prioritaire et charges modérées."
+            return Localization.localizedString("Moins d'un an de pratique régulière. Travail technique prioritaire et charges modérées.")
         case .intermediate:
-            return "1 à 3 ans d'entraînement sérieux. Technique stable, charges modérées à lourdes."
+            return Localization.localizedString("1 à 3 ans d'entraînement sérieux. Technique stable, charges modérées à lourdes.")
         case .advanced:
-            return "Plus de 3 ans de pratique. Charges lourdes maîtrisées et programmation personnalisée."
+            return Localization.localizedString("Plus de 3 ans de pratique. Charges lourdes maîtrisées et programmation personnalisée.")
         }
     }
 }
@@ -169,4 +169,23 @@ enum UserLevel: String, CaseIterable, Identifiable {
 enum StorageKeys {
     static let userLevel = "userLevel"
     static let preferredUnit = "preferredUnit"
+    static let selectedLanguage = "selectedLanguage"
+}
+
+enum AppLanguage: String, CaseIterable, Identifiable {
+    case french = "fr"
+    case english = "en"
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .french:
+            return Localization.localizedString("Français")
+        case .english:
+            return Localization.localizedString("English")
+        }
+    }
+
+    var localeIdentifier: String { rawValue }
 }
