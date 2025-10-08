@@ -2,6 +2,11 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var exerciseLibrary = ExerciseLibrary()
+    @AppStorage(StorageKeys.selectedLanguage) private var storedLanguage = AppLanguage.french.rawValue
+
+    private var appLanguage: AppLanguage {
+        AppLanguage(rawValue: storedLanguage) ?? .french
+    }
 
     var body: some View {
         TabView {
@@ -16,6 +21,7 @@ struct ContentView: View {
                 }
         }
         .environmentObject(exerciseLibrary)
+        .environment(\.locale, Locale(identifier: appLanguage.localeIdentifier))
     }
 }
 
