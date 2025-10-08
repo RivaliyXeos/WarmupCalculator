@@ -73,7 +73,7 @@ struct ExerciseSelectionView: View {
 }
 
 extension String: Identifiable {
-    var id: String { self }
+    public var id: String { self }
 }
 
 struct ExerciseSelectionView_Previews: PreviewProvider {
